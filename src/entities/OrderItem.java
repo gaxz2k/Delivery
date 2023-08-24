@@ -1,0 +1,55 @@
+package entities;
+
+import java.text.SimpleDateFormat;
+
+public class OrderItem {
+
+    private Integer quantity;
+    private Double price;
+    private Product product;
+
+
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+    public OrderItem(Integer quantity, Double price, Product product) {
+        this.quantity = quantity;
+        this.price = price;
+        this.product = product;
+    }
+
+    public OrderItem() {
+    }
+
+
+    public double subTotal(){
+        return quantity * price;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public String toString(){
+        return product.getName()
+                + ", $"
+                + String.format("%.2f",getPrice())
+                + ", Quantity: "
+                + getQuantity()
+                + ", Subtotal: $"
+                + String.format("%.2f",subTotal());
+
+
+    }
+}
